@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Calling Other Function</title>
+</head>
+<body>
+    <h1>    Coding Challenge of Function    </h1>
+
+    <h4>Return in function</h4>
+    <p>    the return keyword in the function always exits the function. and the statement after retuen will not execute. if we want that our statement executes then we have to put our statement before return.
+    </p>    
+    <script>
+        function fruitPeices(fruit) {
+            return fruit * 4;
+        }
+        function foodProcessor(apples, mangoes) {
+            const applePeices = fruitPeices(apples);
+            const mangoPeices = fruitPeices(mangoes);
+            const juice = `juice with ${applePeices} peices of apple and ${mangoPeices} peices of mango is ready.`; 
+            return juice;
+        }
+       console.log(foodProcessor(4,3));
+
+    //    Revieing the Function
+        let calcAge = birthYear => new Date().getFullYear() - birthYear;
+        // console.log(calcAge(1997));
+        const yearUntilRetirement = (birthYear, firstName) => {
+        const age = calcAge(birthYear);
+        const retirement = 65 - age;
+           if (retirement > 0) {
+               console.log(`${firstName} retires in ${retirement} Years.`);
+               return retirement;
+           } else {
+               console.log(`${firstName} is already Retired.`);
+            return -1;
+           }
+        }
+
+        document.write(yearUntilRetirement(1997, "Hamza"));
+
+
+
+        // Coding Challenge
+        let calcAverage = (scr1, scr2, scr3) => (scr1 + scr2 + scr3) / 3;
+        // Test DaTa 1
+        // let dolphinAverage = calcAverage(44, 23,71);
+        // let koalasAverage = calcAverage(65, 54,49);
+        
+        // Test Data 2
+        let dolphinAverage = calcAverage(85, 54,41);
+        let koalasAverage = calcAverage(23, 34,27);
+        console.log(`Team Dolphin Average ${dolphinAverage}`);
+        console.log(`Team KOalas Average ${koalasAverage}`);
+        let chechWinner = (avgDolphins, avgKoalas) => {
+            if(avgDolphins >= 2 * avgKoalas){
+                console.log(`Team Dolphin is the Winner (${avgDolphins} vs ${avgKoalas})`);
+            } else if(avgKoalas >= 2 * avgDolphins) {
+                console.log(`Team Koalas is the Winner (${avgDolphins} vs ${avgKoalas})`);
+            } else {
+                console.log("No One is the Winner");
+            }
+        };
+        let result = chechWinner(dolphinAverage, koalasAverage);
+    </script>
+</body>
+</html>
